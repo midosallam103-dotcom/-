@@ -6,14 +6,10 @@
     <title>صدقة جارية - إلى أمي ونسيبي فقيد الشباب</title>
     <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Scheherazade+New:wght@400;700&family=Reem+Kufi:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <!-- مكتبة العدادات والتأثيرات -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/noframework.waypoints.min.js"></script>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        /* جميع الأنماط السابقة كما هي */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'Amiri', 'Scheherazade New', serif;
             min-height: 100vh;
@@ -22,8 +18,6 @@
             overflow-x: hidden;
             position: relative;
         }
-
-        /* ===== خلفية نجوم متحركة ===== */
         body::before {
             content: '';
             position: fixed;
@@ -51,8 +45,6 @@
             0% { opacity: 0.3; }
             100% { opacity: 0.8; }
         }
-
-        /* ===== زخارف إسلامية متحركة ===== */
         .islamic-pattern {
             position: fixed;
             top: 0;
@@ -69,8 +61,6 @@
             0% { transform: rotate(0deg) scale(1); }
             100% { transform: rotate(360deg) scale(1.2); }
         }
-
-        /* ===== حمام يطير ===== */
         .doves-container {
             position: fixed;
             top: 0;
@@ -103,7 +93,6 @@
             80% { opacity: 0.5; }
             100% { top: -15%; transform: translateX(-50px) rotate(20deg) scale(0.7); opacity: 0; }
         }
-
         .container {
             position: relative;
             z-index: 2;
@@ -111,8 +100,6 @@
             margin: 0 auto;
             padding: 20px;
         }
-
-        /* ===== النصوص الذهبية والفضية ===== */
         .gold-text {
             background: linear-gradient(135deg, #f7e05e, #d4af37, #f7e05e, #d4af37);
             background-size: 300% 300%;
@@ -126,7 +113,6 @@
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
         }
-
         .silver-text {
             background: linear-gradient(135deg, #e8e8e8, #b0b8c8, #e8e8e8);
             background-size: 200% 200%;
@@ -139,8 +125,6 @@
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
         }
-
-        /* ===== تأثيرات التمرير ===== */
         .fade-in {
             opacity: 0;
             transform: translateY(30px);
@@ -150,8 +134,6 @@
             opacity: 1;
             transform: translateY(0);
         }
-
-        /* ===== العدادات ===== */
         .stats-section {
             display: flex;
             justify-content: center;
@@ -176,8 +158,6 @@
             color: #b8c8d8;
             margin-top: 5px;
         }
-
-        /* ===== بطاقة الترحم ===== */
         .memorial-card {
             background: rgba(255, 255, 255, 0.04);
             backdrop-filter: blur(15px);
@@ -208,8 +188,6 @@
             color: rgba(212, 175, 55, 0.04);
             font-family: 'Amiri', serif;
         }
-
-        /* ===== أسماء الوالدين ===== */
         .parents-container {
             display: flex;
             justify-content: center;
@@ -253,8 +231,6 @@
             0%, 100% { filter: drop-shadow(0 0 10px rgba(255,215,0,0.05)); }
             50% { filter: drop-shadow(0 0 30px rgba(255,215,0,0.15)); }
         }
-
-        /* ===== الصور ===== */
         .photos-section {
             display: flex;
             justify-content: center;
@@ -291,8 +267,6 @@
             margin-top: 8px;
             font-weight: 700;
         }
-
-        /* ===== عداد التسبيح ===== */
         .tasbeeh-section {
             background: rgba(255, 255, 255, 0.03);
             border-radius: 50px;
@@ -330,8 +304,6 @@
             background: rgba(58,26,26,0.7);
             border-color: rgba(138,106,58,0.2);
         }
-
-        /* ===== مشغل القرآن ===== */
         .quran-player {
             background: rgba(0, 0, 0, 0.3);
             border-radius: 50px;
@@ -387,8 +359,6 @@
             color: #ffd700;
             box-shadow: 0 0 20px rgba(255,215,0,0.08);
         }
-
-        /* ===== أوقات الصلاة ===== */
         .prayer-times {
             background: rgba(255, 255, 255, 0.03);
             border-radius: 50px;
@@ -418,8 +388,6 @@
             font-weight: 700;
             color: #d4af37;
         }
-
-        /* ===== الأذكار والأدعية ===== */
         .athkar-section {
             background: rgba(255, 255, 255, 0.03);
             border-radius: 50px;
@@ -490,8 +458,6 @@
             border-color: #d4af37;
             color: #ffd700;
         }
-
-        /* ===== المصحف والتفسير ===== */
         .mushaf-section {
             background: rgba(255, 255, 255, 0.03);
             border-radius: 50px;
@@ -550,8 +516,6 @@
             line-height: 1.8;
             color: #d4c5a0;
         }
-
-        /* ===== زر المشاركة ===== */
         .share-section {
             display: flex;
             justify-content: center;
@@ -579,8 +543,6 @@
             color: #f0e6d3;
             transform: translateY(-2px);
         }
-
-        /* ===== دعاء ختامي ===== */
         .final-dua {
             text-align: center;
             font-size: 1.8rem;
@@ -593,8 +555,6 @@
             font-size: 2rem;
             letter-spacing: 4px;
         }
-
-        /* ===== التذييل ===== */
         .footer {
             text-align: center;
             padding: 30px 10px 20px;
@@ -613,8 +573,6 @@
             -webkit-text-fill-color: transparent;
             font-weight: 700;
         }
-
-        /* ===== عرض عمودي ===== */
         .vertical-section {
             display: flex;
             flex-direction: column;
@@ -625,8 +583,6 @@
             width: 100%;
             max-width: 100%;
         }
-
-        /* ===== استجابة ===== */
         @media (max-width: 650px) {
             .parent-card .name { font-size: 1.4rem; }
             .photos-section { gap: 25px; }
@@ -645,10 +601,7 @@
 </head>
 <body>
 
-<!-- ===== الخلفيات ===== -->
 <div class="islamic-pattern"></div>
-
-<!-- ===== الحمام ===== -->
 <div class="doves-container">
     <div class="dove">🕊️</div>
     <div class="dove">🕊️</div>
@@ -662,7 +615,7 @@
 
 <div class="container vertical-section">
 
-    <!-- ===== المقدمة ===== -->
+    <!-- المقدمة -->
     <div class="fade-in" style="text-align: center; margin: 10px 0 20px; padding: 12px; background: rgba(255,215,0,0.03); border-radius: 40px; border: 1px solid rgba(255,215,0,0.05);">
         <div style="font-size: 1.1rem; color: #b8c8d8;">
             <span style="color: #d4af37;">✦</span>
@@ -672,7 +625,7 @@
         </div>
     </div>
 
-    <!-- ===== عداد الزوار والمستفيدين ===== -->
+    <!-- عداد الزوار والمستفيدين -->
     <div class="stats-section fade-in">
         <div class="stat-item">
             <div class="number gold-text" id="visitorCount">0</div>
@@ -688,7 +641,7 @@
         </div>
     </div>
 
-    <!-- ===== أوقات الصلاة ===== -->
+    <!-- أوقات الصلاة -->
     <div class="prayer-times fade-in">
         <h3 class="gold-text" style="font-size: 1.8rem; font-family: 'Reem Kufi', 'Amiri', serif;"><i class="fas fa-mosque" style="color:#d4af37;"></i> أوقات الصلاة (القاهرة)</h3>
         <div class="prayer-grid" id="prayerTimes">
@@ -716,7 +669,7 @@
         <div class="silver-text" style="font-size: 0.8rem; margin-top: 10px;">🗓️ تحديث تلقائي حسب التاريخ الحالي</div>
     </div>
 
-    <!-- ===== بطاقة الوالدين ===== -->
+    <!-- بطاقة الوالدين -->
     <div class="memorial-card fade-in">
         <h1 class="gold-text" style="font-size: 3rem; font-family: 'Reem Kufi', 'Amiri', serif;">❀ صدقة جارية ❀</h1>
         <div class="silver-text" style="font-size: 1.3rem; margin-bottom: 20px;">لكل من يدخل هذا الموقع</div>
@@ -734,10 +687,12 @@
             </div>
         </div>
 
+        <!-- ===== قسم الصور (تم تحديث الرابطين) ===== -->
         <div class="photos-section">
             <div>
                 <div class="photo-frame">
-                    <img src="https://i.ibb.co/xKpkLpCj/IMG-20260629-132948.jpg" alt="والدي" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <!-- صورة محمد طلعت (الرابط الجديد) -->
+                    <img src="https://i.ibb.co/SX5T36WT/IMG.png" alt="والدي محمد طلعت" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                     <div class="no-image" style="display:none; width:100%; height:100%; align-items:center; justify-content:center; flex-direction:column; color:#a0b0c0;">
                         <span style="font-size:2rem;">🕊</span>
                         <span>محمد طلعت أبو الوفا</span>
@@ -747,7 +702,8 @@
             </div>
             <div>
                 <div class="photo-frame">
-                    <img src="https://i.ibb.co/60b67Jhh/IMG.jpg" alt=" امي" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <!-- صورة الأم (الرابط الجديد) -->
+                    <img src="https://i.ibb.co/CpP82kxr/IMG.jpg" alt="والدتي نجاح" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                     <div class="no-image" style="display:none; width:100%; height:100%; align-items:center; justify-content:center; flex-direction:column; color:#a0b0c0;">
                         <span style="font-size:2rem;">🌹</span>
                         <span>نجاح محمد النجار</span>
@@ -762,7 +718,7 @@
         </div>
     </div>
 
-    <!-- ===== عداد التسبيح ===== -->
+    <!-- عداد التسبيح -->
     <div class="tasbeeh-section fade-in">
         <h3 class="gold-text" style="font-size: 2rem; font-family: 'Reem Kufi', 'Amiri', serif;"><i class="fas fa-tasbeeh" style="color:#d4af37;"></i> عداد التسبيح</h3>
         <div class="tasbeeh-counter gold-text" id="counterDisplay">0</div>
@@ -774,7 +730,7 @@
         <div class="silver-text" style="font-size:1rem;">اللهم اجعلها في ميزان حسناتهم</div>
     </div>
 
-    <!-- ===== مشغل القرآن ===== -->
+    <!-- مشغل القرآن -->
     <div class="quran-player fade-in">
         <h3 class="gold-text" style="font-size: 2rem; font-family: 'Reem Kufi', 'Amiri', serif;"><i class="fas fa-quran" style="color:#d4af37;"></i> تلاوات خاشعة</h3>
         <audio controls autoplay loop id="quranAudio">
@@ -804,7 +760,7 @@
         </div>
     </div>
 
-    <!-- ===== الأذكار والأدعية ===== -->
+    <!-- الأذكار والأدعية -->
     <div class="athkar-section fade-in">
         <h2 class="gold-text">🤲 أذكار وأدعية</h2>
         
@@ -907,7 +863,7 @@
         </div>
     </div>
 
-    <!-- ===== المصحف والتفسير ===== -->
+    <!-- المصحف والتفسير -->
     <div class="mushaf-section fade-in">
         <h2 class="gold-text">﴿ المصحف الشريف والتفسير الميسر ﴾</h2>
         
@@ -934,7 +890,6 @@
             صِرَاطَ الَّذِينَ أَنْعَمْتَ عَلَيْهِمْ غَيْرِ الْمَغْضُوبِ عَلَيْهِمْ وَلَا الضَّالِّينَ <span class="aya-number">﴿٧﴾</span>
         </div>
 
-        <!-- تفسير الفاتحة -->
         <div class="tafsir-box">
             <div class="tafsir-title gold-text">📖 تفسير سورة الفاتحة (ميسر)</div>
             <div class="tafsir-text">
@@ -963,7 +918,6 @@
             وَلَا يَئُودُهُ حِفْظُهُمَا وَهُوَ الْعَلِيُّ الْعَظِيمُ <span class="aya-number">﴿٢٥٥﴾</span>
         </div>
 
-        <!-- تفسير آية الكرسي -->
         <div class="tafsir-box">
             <div class="tafsir-title gold-text">📖 تفسير آية الكرسي (ميسر)</div>
             <div class="tafsir-text">
@@ -999,7 +953,7 @@
         </div>
     </div>
 
-    <!-- ===== زر المشاركة ===== -->
+    <!-- زر المشاركة -->
     <div class="share-section fade-in">
         <button class="share-btn" onclick="shareSite('whatsapp')">
             <i class="fab fa-whatsapp" style="color:#25D366;"></i> واتساب
@@ -1015,7 +969,7 @@
         </button>
     </div>
 
-    <!-- ===== دعاء ختامي ===== -->
+    <!-- دعاء ختامي -->
     <div class="final-dua fade-in">
         <strong>اللهم اجعل هذا العمل خالصاً لوجهك الكريم</strong><br>
         واجعله صدقة جارية لـ <strong>فقيد الشباب محمد طلعت أبو الوفا</strong> و <strong>نجاح محمد النجار</strong><br>
@@ -1024,7 +978,7 @@
         <span class="ameen gold-text">آمين يا رب العالمين</span>
     </div>
 
-    <!-- ===== التذييل ===== -->
+    <!-- التذييل -->
     <div class="footer fade-in">
         <div class="designer">
             <span style="color: #d4af37;">✦</span>
@@ -1033,7 +987,7 @@
             <span style="color: #d4af37;">✦</span>
         </div>
         <div class="silver-text" style="margin-top:8px; font-size:0.9rem;">
-            ❀ صدقة جارية عن والدتيّ ❀
+            ❀ صدقة جارية عن والديّ ❀
         </div>
         <div class="silver-text" style="margin-top:5px; font-size:0.7rem; color:#5a6a7a;">
             تم التحديث: ٢٢ يوليو ٢٠٢٦
@@ -1057,7 +1011,6 @@
             counterDisplay.style.transform = 'scale(1)';
             counterDisplay.style.textShadow = '0 0 50px rgba(255,215,0,0.2)';
         }, 200);
-        // تحديث عدد التسبيحات في العداد العلوي
         document.getElementById('tasbeehCount').textContent = counter;
     }
 
@@ -1087,7 +1040,6 @@
         });
     }
 
-    // تشغيل سورة يس تلقائياً
     document.addEventListener('DOMContentLoaded', function() {
         audio.src = 'https://h.top4top.io/m_38557m2a70.mp3';
         audio.load();
@@ -1101,26 +1053,22 @@
         });
     });
 
-    // ===== عداد الزوار (تخزين محلي) =====
+    // ===== عداد الزوار =====
     function updateVisitors() {
         let visitors = localStorage.getItem('siteVisitors') || 0;
         visitors = parseInt(visitors) + 1;
         localStorage.setItem('siteVisitors', visitors);
         document.getElementById('visitorCount').textContent = visitors;
-        
-        // عدد المستفيدين (نصف الزوار تقريباً)
         let beneficiaries = Math.floor(visitors * 0.7);
         document.getElementById('beneficiaryCount').textContent = beneficiaries;
     }
     updateVisitors();
 
-    // ===== أوقات الصلاة (محاكاة) =====
+    // ===== أوقات الصلاة =====
     function updatePrayerTimes() {
         const now = new Date();
         const hours = now.getHours();
         const minutes = now.getMinutes();
-        
-        // أوقات تقريبية للقاهرة (يمكن تعديلها حسب الحاجة)
         const times = {
             fajr: { h: 4, m: 30 },
             dhuhr: { h: 12, m: 0 },
@@ -1128,14 +1076,12 @@
             maghrib: { h: 18, m: 45 },
             isha: { h: 20, m: 15 }
         };
-        
         document.getElementById('fajr').textContent = formatTime(times.fajr.h, times.fajr.m);
         document.getElementById('dhuhr').textContent = formatTime(times.dhuhr.h, times.dhuhr.m);
         document.getElementById('asr').textContent = formatTime(times.asr.h, times.asr.m);
         document.getElementById('maghrib').textContent = formatTime(times.maghrib.h, times.maghrib.m);
         document.getElementById('isha').textContent = formatTime(times.isha.h, times.isha.m);
     }
-    
     function formatTime(h, m) {
         return String(h).padStart(2, '0') + ':' + String(m).padStart(2, '0');
     }
@@ -1147,15 +1093,12 @@
         const parent = button.parentElement;
         const textDiv = parent.querySelector('.text');
         const originalText = textDiv.innerHTML;
-        
         button.textContent = `⏳ ${remaining}`;
         button.disabled = true;
-        
         const interval = setInterval(() => {
             remaining--;
             if (remaining > 0) {
                 button.textContent = `⏳ ${remaining}`;
-                // وميض بسيط
                 textDiv.style.color = '#ffd700';
                 setTimeout(() => textDiv.style.color = '', 200);
             } else {
@@ -1179,7 +1122,6 @@
     function shareSite(platform) {
         const url = window.location.href;
         const text = '🌹 صدقة جارية لفقيد الشباب محمد طلعت أبو الوفا ووالدتي نجاح محمد النجار - ادعوا لهم بالرحمة والمغفرة 🤲';
-        
         switch(platform) {
             case 'whatsapp':
                 window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(text + '\n' + url)}`, '_blank');
@@ -1200,7 +1142,7 @@
         }
     }
 
-    // ===== تأثير التمرير (fade-in) =====
+    // ===== تأثير fade-in =====
     document.addEventListener('DOMContentLoaded', function() {
         const fadeElements = document.querySelectorAll('.fade-in');
         const observer = new IntersectionObserver((entries) => {
@@ -1210,7 +1152,6 @@
                 }
             });
         }, { threshold: 0.1 });
-        
         fadeElements.forEach(el => observer.observe(el));
     });
 </script>
