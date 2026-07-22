@@ -6,9 +6,8 @@
     <title>صدقة جارية - إلى أمي ونسيبي فقيد الشباب</title>
     <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Scheherazade+New:wght@400;700&family=Reem+Kufi:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/noframework.waypoints.min.js"></script>
     <style>
-        /* جميع الأنماط السابقة كما هي */
+        /* ===== Reset & Base ===== */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'Amiri', 'Scheherazade New', serif;
@@ -18,6 +17,65 @@
             overflow-x: hidden;
             position: relative;
         }
+
+        /* ===== شاشة التحميل ===== */
+        #splash-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #0a0f1a;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity 1.5s ease, visibility 1.5s ease;
+        }
+        #splash-screen.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+        .splash-logo {
+            font-size: 4rem;
+            animation: splashPulse 1.5s ease-in-out infinite;
+        }
+        .splash-title {
+            font-size: 2.5rem;
+            margin-top: 20px;
+            font-family: 'Reem Kufi', sans-serif;
+        }
+        .splash-loader {
+            width: 60px;
+            height: 60px;
+            border: 4px solid rgba(212,175,55,0.1);
+            border-top: 4px solid #d4af37;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-top: 30px;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        @keyframes splashPulse {
+            0%, 100% { transform: scale(1); opacity: 0.7; }
+            50% { transform: scale(1.1); opacity: 1; }
+        }
+
+        /* ===== خلفية الجسيمات ===== */
+        #particles-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* ===== خلفية نجوم ===== */
         body::before {
             content: '';
             position: fixed;
@@ -45,6 +103,8 @@
             0% { opacity: 0.3; }
             100% { opacity: 0.8; }
         }
+
+        /* ===== زخارف إسلامية ===== */
         .islamic-pattern {
             position: fixed;
             top: 0;
@@ -61,6 +121,8 @@
             0% { transform: rotate(0deg) scale(1); }
             100% { transform: rotate(360deg) scale(1.2); }
         }
+
+        /* ===== حمام يطير ===== */
         .doves-container {
             position: fixed;
             top: 0;
@@ -74,7 +136,7 @@
         .dove {
             position: absolute;
             font-size: 2.5rem;
-            color: rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.08);
             animation: flyDove linear infinite;
         }
         .dove:nth-child(1) { left: 5%; animation-duration: 18s; animation-delay: 0s; font-size: 2.8rem; }
@@ -93,6 +155,7 @@
             80% { opacity: 0.5; }
             100% { top: -15%; transform: translateX(-50px) rotate(20deg) scale(0.7); opacity: 0; }
         }
+
         .container {
             position: relative;
             z-index: 2;
@@ -100,6 +163,69 @@
             margin: 0 auto;
             padding: 20px;
         }
+
+        /* ===== نافذة الدعاء المنبثقة ===== */
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.5s ease;
+        }
+        .popup-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        .popup-box {
+            background: linear-gradient(145deg, #1a1f2e, #0a0f1a);
+            border: 2px solid rgba(212,175,55,0.2);
+            border-radius: 40px;
+            padding: 40px 35px;
+            max-width: 500px;
+            width: 90%;
+            text-align: center;
+            transform: scale(0.8);
+            transition: transform 0.5s ease;
+            position: relative;
+            box-shadow: 0 30px 80px rgba(0,0,0,0.8);
+        }
+        .popup-overlay.active .popup-box {
+            transform: scale(1);
+        }
+        .popup-box .close-btn {
+            position: absolute;
+            top: 15px;
+            left: 20px;
+            background: none;
+            border: none;
+            color: #d4c5a0;
+            font-size: 1.8rem;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        .popup-box .close-btn:hover { color: #ffd700; }
+        .popup-box .popup-icon { font-size: 4rem; margin-bottom: 15px; }
+        .popup-box h2 { font-size: 2rem; margin-bottom: 15px; }
+        .popup-box p { font-size: 1.2rem; line-height: 1.8; color: #d4c5a0; margin-bottom: 20px; }
+        .popup-box .popup-dua {
+            font-size: 1.4rem;
+            font-style: italic;
+            color: #ffd700;
+            padding: 15px;
+            border-top: 1px solid rgba(255,215,0,0.1);
+            border-bottom: 1px solid rgba(255,215,0,0.1);
+        }
+
+        /* ===== باقي الأنماط ===== */
         .gold-text {
             background: linear-gradient(135deg, #f7e05e, #d4af37, #f7e05e, #d4af37);
             background-size: 300% 300%;
@@ -127,13 +253,15 @@
         }
         .fade-in {
             opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
+            transform: translateY(30px) scale(0.95);
+            transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
         }
         .fade-in.visible {
             opacity: 1;
-            transform: translateY(0);
+            transform: translateY(0) scale(1);
         }
+
+        /* ===== عدادات متحركة ===== */
         .stats-section {
             display: flex;
             justify-content: center;
@@ -144,20 +272,30 @@
             padding: 25px 20px;
             margin: 20px 0 30px;
             border: 1px solid rgba(212,175,55,0.06);
+            backdrop-filter: blur(5px);
         }
         .stat-item {
             text-align: center;
+            position: relative;
         }
         .stat-item .number {
-            font-size: 2.5rem;
+            font-size: 2.8rem;
             font-weight: 700;
             font-family: 'Reem Kufi', sans-serif;
+            transition: all 0.3s;
         }
         .stat-item .label {
             font-size: 0.9rem;
             color: #b8c8d8;
             margin-top: 5px;
         }
+        .stat-item .stat-icon {
+            font-size: 1.5rem;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        /* ===== بطاقة الترحم ===== */
         .memorial-card {
             background: rgba(255, 255, 255, 0.04);
             backdrop-filter: blur(15px);
@@ -169,6 +307,11 @@
             box-shadow: 0 30px 60px -10px rgba(0,0,0,0.7), inset 0 1px 0 rgba(255,215,0,0.05);
             position: relative;
             overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .memorial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 40px 80px -10px rgba(0,0,0,0.9);
         }
         .memorial-card::before {
             content: '﴿';
@@ -188,6 +331,8 @@
             color: rgba(212, 175, 55, 0.04);
             font-family: 'Amiri', serif;
         }
+
+        /* ===== أسماء الوالدين ===== */
         .parents-container {
             display: flex;
             justify-content: center;
@@ -201,12 +346,14 @@
             border-radius: 40px;
             padding: 15px 25px;
             min-width: 200px;
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
             animation: glowPulse 3s ease-in-out infinite;
+            cursor: default;
         }
         .parent-card:hover {
             border-color: #d4af37;
-            box-shadow: 0 0 30px rgba(212,175,55,0.1);
+            box-shadow: 0 0 40px rgba(212,175,55,0.15);
+            transform: translateY(-3px) scale(1.02);
         }
         .parent-card .title {
             font-size: 0.9rem;
@@ -231,6 +378,8 @@
             0%, 100% { filter: drop-shadow(0 0 10px rgba(255,215,0,0.05)); }
             50% { filter: drop-shadow(0 0 30px rgba(255,215,0,0.15)); }
         }
+
+        /* ===== الصور ===== */
         .photos-section {
             display: flex;
             justify-content: center;
@@ -248,13 +397,27 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: all 0.6s ease;
+            transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
             box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+            position: relative;
+        }
+        .photo-frame::after {
+            content: '';
+            position: absolute;
+            inset: -3px;
+            border-radius: 30px 5px 30px 5px;
+            background: linear-gradient(45deg, transparent, rgba(212,175,55,0.1), transparent);
+            opacity: 0;
+            transition: opacity 0.6s;
+            z-index: -1;
+        }
+        .photo-frame:hover::after {
+            opacity: 1;
         }
         .photo-frame:hover {
-            transform: scale(1.05);
+            transform: scale(1.08) rotate(-2deg);
             border-color: #f7e05e;
-            box-shadow: 0 0 50px rgba(212, 175, 55, 0.2);
+            box-shadow: 0 0 60px rgba(212, 175, 55, 0.25);
         }
         .photo-frame img {
             width: 100%;
@@ -267,6 +430,8 @@
             margin-top: 8px;
             font-weight: 700;
         }
+
+        /* ===== عداد التسبيح المتغير ===== */
         .tasbeeh-section {
             background: rgba(255, 255, 255, 0.03);
             border-radius: 50px;
@@ -275,13 +440,26 @@
             border: 1px solid rgba(212,175,55,0.08);
             text-align: center;
             backdrop-filter: blur(10px);
+            transition: all 0.3s;
+        }
+        .tasbeeh-section:hover {
+            border-color: rgba(212,175,55,0.15);
+            box-shadow: 0 0 40px rgba(212,175,55,0.03);
         }
         .tasbeeh-counter {
             font-size: 6rem;
             font-weight: 700;
             font-family: 'Amiri', serif;
-            margin: 10px 0;
+            margin: 5px 0;
             transition: all 0.3s ease;
+        }
+        .tasbeeh-current-dhikr {
+            font-size: 2.2rem;
+            color: #ffd700;
+            font-family: 'Amiri', serif;
+            margin-bottom: 10px;
+            min-height: 3.5rem;
+            text-shadow: 0 0 30px rgba(255,215,0,0.1);
         }
         .btn-tasbeeh {
             background: rgba(26,31,46,0.8);
@@ -292,18 +470,59 @@
             font-size: 1.6rem;
             font-family: 'Amiri', serif;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
             min-width: 130px;
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-tasbeeh::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,215,0,0.05), transparent 70%);
+            opacity: 0;
+            transition: opacity 0.6s;
+        }
+        .btn-tasbeeh:hover::before {
+            opacity: 1;
         }
         .btn-tasbeeh:hover {
             transform: translateY(-3px);
             border-color: #d4af37;
             box-shadow: 0 10px 30px rgba(212,175,55,0.1);
         }
+        .btn-tasbeeh:active {
+            transform: scale(0.95);
+        }
         .btn-reset {
             background: rgba(58,26,26,0.7);
             border-color: rgba(138,106,58,0.2);
         }
+        .btn-reset:hover {
+            background: rgba(78,36,36,0.8);
+            border-color: #d4af37;
+        }
+        .tasbeeh-progress {
+            width: 100%;
+            max-width: 400px;
+            height: 6px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 10px;
+            margin: 15px auto 5px;
+            overflow: hidden;
+        }
+        .tasbeeh-progress-bar {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, #d4af37, #f7e05e);
+            border-radius: 10px;
+            transition: width 0.3s ease;
+        }
+
+        /* ===== مشغل القرآن ===== */
         .quran-player {
             background: rgba(0, 0, 0, 0.3);
             border-radius: 50px;
@@ -313,6 +532,10 @@
             text-align: center;
             backdrop-filter: blur(10px);
             box-shadow: inset 0 0 60px rgba(212,175,55,0.03);
+            transition: all 0.3s;
+        }
+        .quran-player:hover {
+            border-color: rgba(212,175,55,0.12);
         }
         .quran-player audio {
             width: 100%;
@@ -321,6 +544,9 @@
             background: rgba(26,31,46,0.95);
             outline: none;
             box-shadow: 0 0 40px rgba(212,175,55,0.05);
+        }
+        .quran-player audio::-webkit-media-controls-panel {
+            background: rgba(26,31,46,0.95);
         }
         .quran-player .reciter-name {
             margin-top: 12px;
@@ -335,14 +561,14 @@
         }
         .quran-player .surah-btn {
             background: rgba(255,215,0,0.05);
-            border: 1px solid rgba(212,175,55,0.15);
+            border: 1px solid rgba(212,175,55,0.12);
             color: #d4c5a0;
             padding: 8px 20px;
             border-radius: 25px;
             cursor: pointer;
             font-family: 'Amiri', serif;
             font-size: 1rem;
-            transition: all 0.3s ease;
+            transition: all 0.3s;
             display: inline-flex;
             align-items: center;
             gap: 6px;
@@ -359,6 +585,8 @@
             color: #ffd700;
             box-shadow: 0 0 20px rgba(255,215,0,0.08);
         }
+
+        /* ===== أوقات الصلاة ===== */
         .prayer-times {
             background: rgba(255, 255, 255, 0.03);
             border-radius: 50px;
@@ -366,6 +594,10 @@
             margin: 30px 0;
             border: 1px solid rgba(212,175,55,0.06);
             text-align: center;
+            transition: all 0.3s;
+        }
+        .prayer-times:hover {
+            border-color: rgba(212,175,55,0.12);
         }
         .prayer-grid {
             display: grid;
@@ -378,6 +610,12 @@
             padding: 12px 5px;
             border-radius: 20px;
             border-bottom: 2px solid rgba(212,175,55,0.1);
+            transition: all 0.3s;
+        }
+        .prayer-item:hover {
+            background: rgba(0,0,0,0.3);
+            border-bottom-color: #d4af37;
+            transform: translateY(-2px);
         }
         .prayer-item .prayer-name {
             font-size: 0.9rem;
@@ -388,6 +626,8 @@
             font-weight: 700;
             color: #d4af37;
         }
+
+        /* ===== الأذكار ===== */
         .athkar-section {
             background: rgba(255, 255, 255, 0.03);
             border-radius: 50px;
@@ -458,6 +698,8 @@
             border-color: #d4af37;
             color: #ffd700;
         }
+
+        /* ===== المصحف ===== */
         .mushaf-section {
             background: rgba(255, 255, 255, 0.03);
             border-radius: 50px;
@@ -516,6 +758,8 @@
             line-height: 1.8;
             color: #d4c5a0;
         }
+
+        /* ===== مشاركة ===== */
         .share-section {
             display: flex;
             justify-content: center;
@@ -532,7 +776,7 @@
             cursor: pointer;
             font-family: 'Amiri', serif;
             font-size: 1.1rem;
-            transition: all 0.3s ease;
+            transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
             display: inline-flex;
             align-items: center;
             gap: 8px;
@@ -541,8 +785,11 @@
             background: rgba(255,215,0,0.1);
             border-color: #d4af37;
             color: #f0e6d3;
-            transform: translateY(-2px);
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 10px 30px rgba(212,175,55,0.05);
         }
+
+        /* ===== دعاء ختامي ===== */
         .final-dua {
             text-align: center;
             font-size: 1.8rem;
@@ -552,9 +799,11 @@
             line-height: 2.4;
         }
         .final-dua .ameen {
-            font-size: 2rem;
-            letter-spacing: 4px;
+            font-size: 2.2rem;
+            letter-spacing: 6px;
         }
+
+        /* ===== تذييل ===== */
         .footer {
             text-align: center;
             padding: 30px 10px 20px;
@@ -573,6 +822,7 @@
             -webkit-text-fill-color: transparent;
             font-weight: 700;
         }
+
         .vertical-section {
             display: flex;
             flex-direction: column;
@@ -583,11 +833,14 @@
             width: 100%;
             max-width: 100%;
         }
+
+        /* ===== استجابة ===== */
         @media (max-width: 650px) {
             .parent-card .name { font-size: 1.4rem; }
             .photos-section { gap: 25px; }
             .photo-frame { width: 120px; height: 150px; }
             .tasbeeh-counter { font-size: 4.5rem; }
+            .tasbeeh-current-dhikr { font-size: 1.6rem; }
             .btn-tasbeeh { padding: 12px 25px; font-size: 1.3rem; min-width: 90px; }
             .aya-line { font-size: 1.3rem; line-height: 2.2; }
             .athkar-item .text { font-size: 1rem; }
@@ -595,13 +848,42 @@
             .quran-player .surah-btn { font-size: 0.85rem; padding: 5px 14px; }
             .prayer-grid { grid-template-columns: repeat(3, 1fr); }
             .stats-section { gap: 20px; }
-            .stat-item .number { font-size: 1.8rem; }
+            .stat-item .number { font-size: 2rem; }
+            .popup-box { padding: 30px 20px; }
+            .popup-box h2 { font-size: 1.6rem; }
+            .splash-title { font-size: 1.8rem; }
         }
     </style>
 </head>
 <body>
 
+<!-- ===== شاشة التحميل ===== -->
+<div id="splash-screen">
+    <div class="splash-logo">🕊️</div>
+    <div class="splash-title gold-text">صدقة جارية</div>
+    <div style="color: #b8c8d8; font-size: 1.2rem; margin-top: 10px;">إلى أمي ونسيبي فقيد الشباب</div>
+    <div class="splash-loader"></div>
+</div>
+
+<!-- ===== نافذة الدعاء المنبثقة ===== -->
+<div class="popup-overlay" id="popupOverlay">
+    <div class="popup-box">
+        <button class="close-btn" onclick="closePopup()">✕</button>
+        <div class="popup-icon">🤲</div>
+        <h2 class="gold-text">صدقة جارية</h2>
+        <p>اللهم اجعل هذا العمل خالصاً لوجهك الكريم، واجعله صدقة جارية لـ</p>
+        <div class="popup-dua">
+            🕊️ فقيد الشباب <strong>محمد طلعت أبو الوفا</strong><br>
+         🌹 والدتى <strong>نجاح محمد النجار</strong>
+        </div>
+        <p style="margin-top:15px; font-size:1rem;">اللهم اغفر لهما وارحمهما وعافهما واعف عنهما</p>
+        <button onclick="closePopup()" style="margin-top:20px; background:rgba(212,175,55,0.15); border:1px solid #d4af37; color:#f0e6d3; padding:10px 35px; border-radius:30px; cursor:pointer; font-family:'Amiri',serif; font-size:1.2rem; transition:all 0.3s;">آمين</button>
+    </div>
+</div>
+
+<!-- ===== الخلفيات ===== -->
 <div class="islamic-pattern"></div>
+<canvas id="particles-canvas"></canvas>
 <div class="doves-container">
     <div class="dove">🕊️</div>
     <div class="dove">🕊️</div>
@@ -615,7 +897,7 @@
 
 <div class="container vertical-section">
 
-    <!-- المقدمة -->
+    <!-- ===== المقدمة ===== -->
     <div class="fade-in" style="text-align: center; margin: 10px 0 20px; padding: 12px; background: rgba(255,215,0,0.03); border-radius: 40px; border: 1px solid rgba(255,215,0,0.05);">
         <div style="font-size: 1.1rem; color: #b8c8d8;">
             <span style="color: #d4af37;">✦</span>
@@ -625,23 +907,26 @@
         </div>
     </div>
 
-    <!-- عداد الزوار والمستفيدين -->
+    <!-- ===== عدادات متحركة ===== -->
     <div class="stats-section fade-in">
         <div class="stat-item">
+            <span class="stat-icon">🕊️</span>
             <div class="number gold-text" id="visitorCount">0</div>
-            <div class="label silver-text">🕊️ زوار الموقع</div>
+            <div class="label silver-text">زوار الموقع</div>
         </div>
         <div class="stat-item">
+            <span class="stat-icon">🌹</span>
             <div class="number gold-text" id="beneficiaryCount">0</div>
-            <div class="label silver-text">🌹 مستفيدين من الدعاء</div>
+            <div class="label silver-text">مستفيدين من الدعاء</div>
         </div>
         <div class="stat-item">
+            <span class="stat-icon">📿</span>
             <div class="number gold-text" id="tasbeehCount">0</div>
-            <div class="label silver-text">📿 تسبيحات</div>
+            <div class="label silver-text">تسبيحات</div>
         </div>
     </div>
 
-    <!-- أوقات الصلاة -->
+    <!-- ===== أوقات الصلاة ===== -->
     <div class="prayer-times fade-in">
         <h3 class="gold-text" style="font-size: 1.8rem; font-family: 'Reem Kufi', 'Amiri', serif;"><i class="fas fa-mosque" style="color:#d4af37;"></i> أوقات الصلاة (القاهرة)</h3>
         <div class="prayer-grid" id="prayerTimes">
@@ -669,7 +954,7 @@
         <div class="silver-text" style="font-size: 0.8rem; margin-top: 10px;">🗓️ تحديث تلقائي حسب التاريخ الحالي</div>
     </div>
 
-    <!-- بطاقة الوالدين -->
+    <!-- ===== بطاقة الوالدين ===== -->
     <div class="memorial-card fade-in">
         <h1 class="gold-text" style="font-size: 3rem; font-family: 'Reem Kufi', 'Amiri', serif;">❀ صدقة جارية ❀</h1>
         <div class="silver-text" style="font-size: 1.3rem; margin-bottom: 20px;">لكل من يدخل هذا الموقع</div>
@@ -687,11 +972,9 @@
             </div>
         </div>
 
-        <!-- ===== قسم الصور (تم تحديث كلا الرابطين) ===== -->
         <div class="photos-section">
             <div>
                 <div class="photo-frame">
-                    <!-- صورة نسيبك (الرابط الجديد من PostImages) -->
                     <img src="https://i.postimg.cc/nr6sdG3V/IMG-20260629-131515.png" alt="والدي محمد طلعت" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                     <div class="no-image" style="display:none; width:100%; height:100%; align-items:center; justify-content:center; flex-direction:column; color:#a0b0c0;">
                         <span style="font-size:2rem;">🕊</span>
@@ -702,7 +985,6 @@
             </div>
             <div>
                 <div class="photo-frame">
-                    <!-- صورة الأم (الرابط الجديد من PostImages) -->
                     <img src="https://i.postimg.cc/pr1QPjqv/IMG-20260722-113254.jpg" alt="والدتي نجاح" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                     <div class="no-image" style="display:none; width:100%; height:100%; align-items:center; justify-content:center; flex-direction:column; color:#a0b0c0;">
                         <span style="font-size:2rem;">🌹</span>
@@ -718,19 +1000,23 @@
         </div>
     </div>
 
-    <!-- عداد التسبيح -->
+    <!-- ===== عداد التسبيح المتغير ===== -->
     <div class="tasbeeh-section fade-in">
         <h3 class="gold-text" style="font-size: 2rem; font-family: 'Reem Kufi', 'Amiri', serif;"><i class="fas fa-tasbeeh" style="color:#d4af37;"></i> عداد التسبيح</h3>
+        <div class="tasbeeh-current-dhikr gold-text" id="currentDhikr">✨ سبحان الله</div>
         <div class="tasbeeh-counter gold-text" id="counterDisplay">0</div>
+        <div class="tasbeeh-progress">
+            <div class="tasbeeh-progress-bar" id="progressBar"></div>
+        </div>
         <div style="display:flex; justify-content:center; gap:20px; flex-wrap:wrap; margin:15px 0;">
-            <button class="btn-tasbeeh" onclick="addTasbeeh()">✦ سبحان الله</button>
+            <button class="btn-tasbeeh" onclick="addTasbeeh()">✦ تسبيحة</button>
             <button class="btn-tasbeeh" onclick="addTasbeeh(5)" style="border-color:rgba(184,160,112,0.2);">+5</button>
             <button class="btn-tasbeeh btn-reset" onclick="resetTasbeeh()">⟳ إعادة</button>
         </div>
         <div class="silver-text" style="font-size:1rem;">اللهم اجعلها في ميزان حسناتهم</div>
     </div>
 
-    <!-- مشغل القرآن -->
+    <!-- ===== مشغل القرآن ===== -->
     <div class="quran-player fade-in">
         <h3 class="gold-text" style="font-size: 2rem; font-family: 'Reem Kufi', 'Amiri', serif;"><i class="fas fa-quran" style="color:#d4af37;"></i> تلاوات خاشعة</h3>
         <audio controls autoplay loop id="quranAudio">
@@ -760,7 +1046,7 @@
         </div>
     </div>
 
-    <!-- الأذكار والأدعية -->
+    <!-- ===== الأذكار والأدعية ===== -->
     <div class="athkar-section fade-in">
         <h2 class="gold-text">🤲 أذكار وأدعية</h2>
         
@@ -863,7 +1149,7 @@
         </div>
     </div>
 
-    <!-- المصحف والتفسير -->
+    <!-- ===== المصحف والتفسير ===== -->
     <div class="mushaf-section fade-in">
         <h2 class="gold-text">﴿ المصحف الشريف والتفسير الميسر ﴾</h2>
         
@@ -953,7 +1239,7 @@
         </div>
     </div>
 
-    <!-- زر المشاركة -->
+    <!-- ===== مشاركة ===== -->
     <div class="share-section fade-in">
         <button class="share-btn" onclick="shareSite('whatsapp')">
             <i class="fab fa-whatsapp" style="color:#25D366;"></i> واتساب
@@ -969,7 +1255,7 @@
         </button>
     </div>
 
-    <!-- دعاء ختامي -->
+    <!-- ===== دعاء ختامي ===== -->
     <div class="final-dua fade-in">
         <strong>اللهم اجعل هذا العمل خالصاً لوجهك الكريم</strong><br>
         واجعله صدقة جارية لـ <strong>فقيد الشباب محمد طلعت أبو الوفا</strong> و <strong>نجاح محمد النجار</strong><br>
@@ -978,7 +1264,7 @@
         <span class="ameen gold-text">آمين يا رب العالمين</span>
     </div>
 
-    <!-- التذييل -->
+    <!-- ===== تذييل ===== -->
     <div class="footer fade-in">
         <div class="designer">
             <span style="color: #d4af37;">✦</span>
@@ -997,12 +1283,105 @@
 </div>
 
 <script>
-    // ===== عداد التسبيح =====
+    // ===== إخفاء شاشة التحميل =====
+    window.addEventListener('load', function() {
+        setTimeout(function() {
+            document.getElementById('splash-screen').classList.add('hidden');
+            // إظهار النافذة المنبثقة بعد ثانية من ظهور الموقع
+            setTimeout(function() {
+                document.getElementById('popupOverlay').classList.add('active');
+            }, 800);
+        }, 1500);
+    });
+
+    // ===== إغلاق النافذة المنبثقة =====
+    function closePopup() {
+        document.getElementById('popupOverlay').classList.remove('active');
+    }
+
+    // ===== جسيمات ذهبية =====
+    const canvas = document.getElementById('particles-canvas');
+    const ctx = canvas.getContext('2d');
+    let particles = [];
+
+    function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    class Particle {
+        constructor() {
+            this.x = Math.random() * canvas.width;
+            this.y = Math.random() * canvas.height;
+            this.size = Math.random() * 3 + 1;
+            this.speedX = (Math.random() - 0.5) * 0.5;
+            this.speedY = (Math.random() - 0.5) * 0.5;
+            this.opacity = Math.random() * 0.5 + 0.2;
+        }
+        update() {
+            this.x += this.speedX;
+            this.y += this.speedY;
+            if (this.x > canvas.width) this.x = 0;
+            if (this.x < 0) this.x = canvas.width;
+            if (this.y > canvas.height) this.y = 0;
+            if (this.y < 0) this.y = canvas.height;
+        }
+        draw() {
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(212, 175, 55, ${this.opacity})`;
+            ctx.fill();
+        }
+    }
+
+    for (let i = 0; i < 80; i++) {
+        particles.push(new Particle());
+    }
+
+    function animateParticles() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        particles.forEach(p => {
+            p.update();
+            p.draw();
+        });
+        requestAnimationFrame(animateParticles);
+    }
+    animateParticles();
+
+    // ===== عداد التسبيح المتغير =====
     let counter = 0;
     const counterDisplay = document.getElementById('counterDisplay');
+    const currentDhikrDisplay = document.getElementById('currentDhikr');
+    const progressBar = document.getElementById('progressBar');
+    
+    const dhikrList = [
+        { name: 'سبحان الله', emoji: '✨' },
+        { name: 'الحمد لله', emoji: '🌟' },
+        { name: 'الله أكبر', emoji: '⭐' },
+        { name: 'لا حول ولا قوة إلا بالله', emoji: '💪' }
+    ];
+    
+    function getCurrentDhikr() {
+        const index = Math.floor(counter / 100) % dhikrList.length;
+        return dhikrList[index];
+    }
+    
+    function updateDhikrDisplay() {
+        const current = getCurrentDhikr();
+        currentDhikrDisplay.textContent = current.emoji + ' ' + current.name;
+        const progress = (counter % 100) / 100 * 100;
+        progressBar.style.width = progress + '%';
+        const colors = ['#ffd700', '#00e5ff', '#ff6b6b', '#a8e6cf'];
+        const colorIndex = Math.floor(counter / 100) % dhikrList.length;
+        counterDisplay.style.color = colors[colorIndex % colors.length];
+    }
 
     function addTasbeeh(amount = 1) {
-        counter += amount;
+        for (let i = 0; i < amount; i++) {
+            counter++;
+        }
         counterDisplay.textContent = counter;
         document.getElementById('tasbeehCount').textContent = counter;
         counterDisplay.style.transform = 'scale(1.2)';
@@ -1011,7 +1390,7 @@
             counterDisplay.style.transform = 'scale(1)';
             counterDisplay.style.textShadow = '0 0 50px rgba(255,215,0,0.2)';
         }, 200);
-        document.getElementById('tasbeehCount').textContent = counter;
+        updateDhikrDisplay();
     }
 
     function resetTasbeeh() {
@@ -1020,6 +1399,7 @@
         document.getElementById('tasbeehCount').textContent = counter;
         counterDisplay.style.transform = 'scale(0.8)';
         setTimeout(() => counterDisplay.style.transform = 'scale(1)', 200);
+        updateDhikrDisplay();
     }
 
     // ===== مشغل القرآن =====
@@ -1031,7 +1411,6 @@
         audio.load();
         audio.play().catch(e => console.log('التشغيل مقيد'));
         reciterName.textContent = '🎙️ تلاوة خاشعة - ' + name;
-        
         document.querySelectorAll('.surah-btn').forEach(btn => btn.classList.remove('active'));
         document.querySelectorAll('.surah-btn').forEach(btn => {
             if (btn.textContent.includes(name.split(' - ')[0]) || name.includes(btn.textContent.split('(')[0])) {
@@ -1045,12 +1424,12 @@
         audio.load();
         audio.play().catch(e => console.log('التشغيل التلقائي مقيد'));
         reciterName.textContent = '🎙️ تلاوة خاشعة - سورة يس (القارئ: سيد سعيد)';
-        
         document.querySelectorAll('.surah-btn').forEach(btn => {
             if (btn.textContent.includes('سورة يس') && btn.textContent.includes('سيد سعيد')) {
                 btn.classList.add('active');
             }
         });
+        updateDhikrDisplay();
     });
 
     // ===== عداد الزوار =====
@@ -1066,9 +1445,6 @@
 
     // ===== أوقات الصلاة =====
     function updatePrayerTimes() {
-        const now = new Date();
-        const hours = now.getHours();
-        const minutes = now.getMinutes();
         const times = {
             fajr: { h: 4, m: 30 },
             dhuhr: { h: 12, m: 0 },
@@ -1092,7 +1468,6 @@
         let remaining = count;
         const parent = button.parentElement;
         const textDiv = parent.querySelector('.text');
-        const originalText = textDiv.innerHTML;
         button.textContent = `⏳ ${remaining}`;
         button.disabled = true;
         const interval = setInterval(() => {
@@ -1118,7 +1493,7 @@
         }, 500);
     }
 
-    // ===== مشاركة الموقع =====
+    // ===== مشاركة =====
     function shareSite(platform) {
         const url = window.location.href;
         const text = '🌹 صدقة جارية لفقيد الشباب محمد طلعت أبو الوفا ووالدتي نجاح محمد النجار - ادعوا لهم بالرحمة والمغفرة 🤲';
