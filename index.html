@@ -1,0 +1,1219 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>صدقة جارية - إلى أمي ونسيبي فقيد الشباب</title>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Scheherazade+New:wght@400;700&family=Reem+Kufi:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- مكتبة العدادات والتأثيرات -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/noframework.waypoints.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Amiri', 'Scheherazade New', serif;
+            min-height: 100vh;
+            background: #0a0f1a;
+            color: #f0e6d3;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* ===== خلفية نجوم متحركة ===== */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(2px 2px at 20px 30px, #eee, transparent),
+                radial-gradient(2px 2px at 40px 70px, rgba(255,255,255,0.8), transparent),
+                radial-gradient(2px 2px at 50px 160px, #ddd, transparent),
+                radial-gradient(2px 2px at 90px 40px, rgba(255,255,255,0.6), transparent),
+                radial-gradient(2px 2px at 130px 80px, #fff, transparent),
+                radial-gradient(2px 2px at 160px 30px, rgba(255,255,255,0.7), transparent),
+                radial-gradient(3px 3px at 200px 120px, #ffd700, transparent),
+                radial-gradient(2px 2px at 250px 50px, #f7e05e, transparent);
+            background-size: 250px 250px;
+            background-repeat: repeat;
+            opacity: 0.7;
+            animation: twinkle 4s ease-in-out infinite alternate;
+            z-index: 0;
+            pointer-events: none;
+        }
+        @keyframes twinkle {
+            0% { opacity: 0.3; }
+            100% { opacity: 0.8; }
+        }
+
+        /* ===== زخارف إسلامية متحركة ===== */
+        .islamic-pattern {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" opacity="0.04"><path d="M50 0 L61.8 38.2 L100 50 L61.8 61.8 L50 100 L38.2 61.8 L0 50 L38.2 38.2 Z" fill="%23d4af37"/><circle cx="50" cy="50" r="20" fill="none" stroke="%23d4af37" stroke-width="1"/><path d="M50 10 L55 45 L90 50 L55 55 L50 90 L45 55 L10 50 L45 45 Z" fill="none" stroke="%23f7e05e" stroke-width="0.5"/></svg>');
+            background-size: 180px 180px;
+            pointer-events: none;
+            z-index: 0;
+            animation: rotatePattern 80s linear infinite;
+        }
+        @keyframes rotatePattern {
+            0% { transform: rotate(0deg) scale(1); }
+            100% { transform: rotate(360deg) scale(1.2); }
+        }
+
+        /* ===== حمام يطير ===== */
+        .doves-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 1;
+            pointer-events: none;
+            overflow: hidden;
+        }
+        .dove {
+            position: absolute;
+            font-size: 2.5rem;
+            color: rgba(255,255,255,0.1);
+            animation: flyDove linear infinite;
+        }
+        .dove:nth-child(1) { left: 5%; animation-duration: 18s; animation-delay: 0s; font-size: 2.8rem; }
+        .dove:nth-child(2) { left: 20%; animation-duration: 22s; animation-delay: 2s; font-size: 2.2rem; }
+        .dove:nth-child(3) { left: 35%; animation-duration: 16s; animation-delay: 4s; font-size: 3rem; }
+        .dove:nth-child(4) { left: 50%; animation-duration: 20s; animation-delay: 1s; font-size: 2.5rem; }
+        .dove:nth-child(5) { left: 65%; animation-duration: 19s; animation-delay: 3s; font-size: 2.8rem; }
+        .dove:nth-child(6) { left: 80%; animation-duration: 21s; animation-delay: 5s; font-size: 2.3rem; }
+        .dove:nth-child(7) { left: 10%; animation-duration: 23s; animation-delay: 6s; font-size: 2.6rem; }
+        .dove:nth-child(8) { left: 45%; animation-duration: 17s; animation-delay: 2.5s; font-size: 3.2rem; }
+        @keyframes flyDove {
+            0% { top: 100%; transform: translateX(0) rotate(0deg) scale(0.3); opacity: 0; }
+            10% { opacity: 0.3; }
+            30% { transform: translateX(-80px) rotate(15deg) scale(1); opacity: 0.6; }
+            60% { transform: translateX(100px) rotate(-10deg) scale(1.1); opacity: 0.8; }
+            80% { opacity: 0.5; }
+            100% { top: -15%; transform: translateX(-50px) rotate(20deg) scale(0.7); opacity: 0; }
+        }
+
+        .container {
+            position: relative;
+            z-index: 2;
+            max-width: 950px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* ===== النصوص الذهبية والفضية ===== */
+        .gold-text {
+            background: linear-gradient(135deg, #f7e05e, #d4af37, #f7e05e, #d4af37);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: goldShine 3s ease-in-out infinite;
+            filter: drop-shadow(0 0 20px rgba(212,175,55,0.15));
+        }
+        @keyframes goldShine {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .silver-text {
+            background: linear-gradient(135deg, #e8e8e8, #b0b8c8, #e8e8e8);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: silverShine 5s ease-in-out infinite;
+        }
+        @keyframes silverShine {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* ===== تأثيرات التمرير ===== */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ===== العدادات ===== */
+        .stats-section {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            background: rgba(255,255,255,0.03);
+            border-radius: 50px;
+            padding: 25px 20px;
+            margin: 20px 0 30px;
+            border: 1px solid rgba(212,175,55,0.06);
+        }
+        .stat-item {
+            text-align: center;
+        }
+        .stat-item .number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            font-family: 'Reem Kufi', sans-serif;
+        }
+        .stat-item .label {
+            font-size: 0.9rem;
+            color: #b8c8d8;
+            margin-top: 5px;
+        }
+
+        /* ===== بطاقة الترحم ===== */
+        .memorial-card {
+            background: rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(15px);
+            border: 2px solid rgba(255, 215, 0, 0.12);
+            border-radius: 60px 20px 60px 20px;
+            padding: 40px 30px;
+            margin: 30px 0 40px;
+            text-align: center;
+            box-shadow: 0 30px 60px -10px rgba(0,0,0,0.7), inset 0 1px 0 rgba(255,215,0,0.05);
+            position: relative;
+            overflow: hidden;
+        }
+        .memorial-card::before {
+            content: '﴿';
+            position: absolute;
+            top: -10px;
+            right: 30px;
+            font-size: 8rem;
+            color: rgba(212, 175, 55, 0.04);
+            font-family: 'Amiri', serif;
+        }
+        .memorial-card::after {
+            content: '﴾';
+            position: absolute;
+            bottom: -10px;
+            left: 30px;
+            font-size: 8rem;
+            color: rgba(212, 175, 55, 0.04);
+            font-family: 'Amiri', serif;
+        }
+
+        /* ===== أسماء الوالدين ===== */
+        .parents-container {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+        .parent-card {
+            background: rgba(0,0,0,0.3);
+            border: 1px solid rgba(212,175,55,0.12);
+            border-radius: 40px;
+            padding: 15px 25px;
+            min-width: 200px;
+            transition: all 0.3s ease;
+            animation: glowPulse 3s ease-in-out infinite;
+        }
+        .parent-card:hover {
+            border-color: #d4af37;
+            box-shadow: 0 0 30px rgba(212,175,55,0.1);
+        }
+        .parent-card .title {
+            font-size: 0.9rem;
+            color: #b8c8d8;
+            margin-bottom: 5px;
+        }
+        .parent-card .name {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+        .parent-card .badge {
+            display: inline-block;
+            background: rgba(255,215,0,0.1);
+            border: 1px solid rgba(255,215,0,0.15);
+            border-radius: 20px;
+            padding: 2px 15px;
+            font-size: 0.8rem;
+            color: #d4af37;
+            margin-top: 5px;
+        }
+        @keyframes glowPulse {
+            0%, 100% { filter: drop-shadow(0 0 10px rgba(255,215,0,0.05)); }
+            50% { filter: drop-shadow(0 0 30px rgba(255,215,0,0.15)); }
+        }
+
+        /* ===== الصور ===== */
+        .photos-section {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            flex-wrap: wrap;
+            margin: 30px 0 15px;
+        }
+        .photo-frame {
+            width: 150px;
+            height: 180px;
+            border: 3px solid #d4af37;
+            border-radius: 30px 5px 30px 5px;
+            overflow: hidden;
+            background: rgba(0,0,0,0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.6s ease;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+        }
+        .photo-frame:hover {
+            transform: scale(1.05);
+            border-color: #f7e05e;
+            box-shadow: 0 0 50px rgba(212, 175, 55, 0.2);
+        }
+        .photo-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .photo-label {
+            text-align: center;
+            font-size: 1.1rem;
+            margin-top: 8px;
+            font-weight: 700;
+        }
+
+        /* ===== عداد التسبيح ===== */
+        .tasbeeh-section {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 50px;
+            padding: 30px 25px;
+            margin: 35px 0;
+            border: 1px solid rgba(212,175,55,0.08);
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+        .tasbeeh-counter {
+            font-size: 6rem;
+            font-weight: 700;
+            font-family: 'Amiri', serif;
+            margin: 10px 0;
+            transition: all 0.3s ease;
+        }
+        .btn-tasbeeh {
+            background: rgba(26,31,46,0.8);
+            border: 1px solid rgba(212,175,55,0.2);
+            color: #f0e6d3;
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-size: 1.6rem;
+            font-family: 'Amiri', serif;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            min-width: 130px;
+        }
+        .btn-tasbeeh:hover {
+            transform: translateY(-3px);
+            border-color: #d4af37;
+            box-shadow: 0 10px 30px rgba(212,175,55,0.1);
+        }
+        .btn-reset {
+            background: rgba(58,26,26,0.7);
+            border-color: rgba(138,106,58,0.2);
+        }
+
+        /* ===== مشغل القرآن ===== */
+        .quran-player {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 50px;
+            padding: 30px 25px;
+            margin: 35px 0;
+            border: 1px solid rgba(212,175,55,0.06);
+            text-align: center;
+            backdrop-filter: blur(10px);
+            box-shadow: inset 0 0 60px rgba(212,175,55,0.03);
+        }
+        .quran-player audio {
+            width: 100%;
+            max-width: 550px;
+            border-radius: 50px;
+            background: rgba(26,31,46,0.95);
+            outline: none;
+            box-shadow: 0 0 40px rgba(212,175,55,0.05);
+        }
+        .quran-player .reciter-name {
+            margin-top: 12px;
+            font-size: 0.95rem;
+        }
+        .quran-player .surah-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: 15px;
+        }
+        .quran-player .surah-btn {
+            background: rgba(255,215,0,0.05);
+            border: 1px solid rgba(212,175,55,0.15);
+            color: #d4c5a0;
+            padding: 8px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-family: 'Amiri', serif;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .quran-player .surah-btn:hover {
+            background: rgba(255,215,0,0.1);
+            border-color: #d4af37;
+            color: #f0e6d3;
+            transform: translateY(-2px);
+        }
+        .quran-player .surah-btn.active {
+            background: rgba(255,215,0,0.15);
+            border-color: #d4af37;
+            color: #ffd700;
+            box-shadow: 0 0 20px rgba(255,215,0,0.08);
+        }
+
+        /* ===== أوقات الصلاة ===== */
+        .prayer-times {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 50px;
+            padding: 25px 20px;
+            margin: 30px 0;
+            border: 1px solid rgba(212,175,55,0.06);
+            text-align: center;
+        }
+        .prayer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+        .prayer-item {
+            background: rgba(0,0,0,0.2);
+            padding: 12px 5px;
+            border-radius: 20px;
+            border-bottom: 2px solid rgba(212,175,55,0.1);
+        }
+        .prayer-item .prayer-name {
+            font-size: 0.9rem;
+            color: #b8c8d8;
+        }
+        .prayer-item .prayer-time {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #d4af37;
+        }
+
+        /* ===== الأذكار والأدعية ===== */
+        .athkar-section {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 50px;
+            padding: 40px 30px;
+            margin: 40px 0;
+            border: 1px solid rgba(212,175,55,0.05);
+            backdrop-filter: blur(10px);
+        }
+        .athkar-section h2 {
+            font-size: 2.2rem;
+            border-bottom: 2px solid rgba(255,215,0,0.06);
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+            text-align: center;
+            font-family: 'Reem Kufi', 'Amiri', serif;
+        }
+        .athkar-category {
+            margin-bottom: 30px;
+        }
+        .athkar-category h3 {
+            font-size: 1.6rem;
+            color: #d4af37;
+            margin-bottom: 15px;
+            text-align: center;
+            font-weight: 400;
+        }
+        .athkar-item {
+            background: rgba(0,0,0,0.15);
+            padding: 20px 25px;
+            border-radius: 25px;
+            border-right: 3px solid #d4af37;
+            margin-bottom: 15px;
+            transition: all 0.3s ease;
+            text-align: right;
+        }
+        .athkar-item:hover {
+            background: rgba(0,0,0,0.25);
+            transform: translateX(-5px);
+        }
+        .athkar-item .repeat {
+            color: #b8c8d8;
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+            font-weight: 700;
+        }
+        .athkar-item .text {
+            font-size: 1.2rem;
+            line-height: 1.9;
+            font-style: italic;
+        }
+        .athkar-item .text .bismillah {
+            color: #d4af37;
+            font-size: 1.3rem;
+        }
+        .athkar-item .repeat-btn {
+            background: rgba(255,215,0,0.08);
+            border: 1px solid rgba(212,175,55,0.15);
+            color: #d4c5a0;
+            padding: 4px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            transition: all 0.3s ease;
+            margin-top: 8px;
+        }
+        .athkar-item .repeat-btn:hover {
+            background: rgba(255,215,0,0.15);
+            border-color: #d4af37;
+            color: #ffd700;
+        }
+
+        /* ===== المصحف والتفسير ===== */
+        .mushaf-section {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 50px;
+            padding: 40px 30px;
+            margin: 40px 0;
+            border: 1px solid rgba(212,175,55,0.05);
+            backdrop-filter: blur(10px);
+            text-align: center;
+        }
+        .mushaf-section h2 {
+            font-size: 2.2rem;
+            border-bottom: 2px solid rgba(255,215,0,0.06);
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+            font-family: 'Reem Kufi', 'Amiri', serif;
+        }
+        .surah-title {
+            font-size: 1.8rem;
+            color: #d4af37;
+            margin: 25px 0 15px;
+            font-weight: 700;
+        }
+        .aya-line {
+            font-size: 1.6rem;
+            line-height: 2.6;
+            padding: 5px 10px;
+            font-family: 'Scheherazade New', 'Amiri', serif;
+            text-align: center;
+        }
+        .aya-line .aya-number {
+            color: #d4af37;
+            font-size: 1rem;
+            margin-right: 5px;
+            font-weight: 700;
+        }
+        .aya-line .bismillah {
+            color: #d4af37;
+            font-size: 1.8rem;
+        }
+        .tafsir-box {
+            background: rgba(0,0,0,0.15);
+            border-radius: 20px;
+            padding: 20px 25px;
+            margin: 20px 0;
+            text-align: right;
+            border-right: 3px solid #d4af37;
+        }
+        .tafsir-box .tafsir-title {
+            color: #d4af37;
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        .tafsir-box .tafsir-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #d4c5a0;
+        }
+
+        /* ===== زر المشاركة ===== */
+        .share-section {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin: 30px 0 20px;
+        }
+        .share-btn {
+            background: rgba(255,215,0,0.05);
+            border: 1px solid rgba(212,175,55,0.12);
+            color: #d4c5a0;
+            padding: 10px 25px;
+            border-radius: 40px;
+            cursor: pointer;
+            font-family: 'Amiri', serif;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .share-btn:hover {
+            background: rgba(255,215,0,0.1);
+            border-color: #d4af37;
+            color: #f0e6d3;
+            transform: translateY(-2px);
+        }
+
+        /* ===== دعاء ختامي ===== */
+        .final-dua {
+            text-align: center;
+            font-size: 1.8rem;
+            padding: 40px 20px;
+            border-top: 2px solid rgba(255,215,0,0.05);
+            margin-top: 35px;
+            line-height: 2.4;
+        }
+        .final-dua .ameen {
+            font-size: 2rem;
+            letter-spacing: 4px;
+        }
+
+        /* ===== التذييل ===== */
+        .footer {
+            text-align: center;
+            padding: 30px 10px 20px;
+            border-top: 1px solid rgba(255,215,0,0.05);
+            margin-top: 40px;
+            background: rgba(0,0,0,0.15);
+            border-radius: 40px 40px 0 0;
+        }
+        .footer .designer {
+            font-size: 1.3rem;
+            letter-spacing: 1px;
+        }
+        .footer .designer .name {
+            background: linear-gradient(135deg, #f7e05e, #d4af37);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
+        }
+
+        /* ===== عرض عمودي ===== */
+        .vertical-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+        }
+        .vertical-section > * {
+            width: 100%;
+            max-width: 100%;
+        }
+
+        /* ===== استجابة ===== */
+        @media (max-width: 650px) {
+            .parent-card .name { font-size: 1.4rem; }
+            .photos-section { gap: 25px; }
+            .photo-frame { width: 120px; height: 150px; }
+            .tasbeeh-counter { font-size: 4.5rem; }
+            .btn-tasbeeh { padding: 12px 25px; font-size: 1.3rem; min-width: 90px; }
+            .aya-line { font-size: 1.3rem; line-height: 2.2; }
+            .athkar-item .text { font-size: 1rem; }
+            .final-dua { font-size: 1.4rem; }
+            .quran-player .surah-btn { font-size: 0.85rem; padding: 5px 14px; }
+            .prayer-grid { grid-template-columns: repeat(3, 1fr); }
+            .stats-section { gap: 20px; }
+            .stat-item .number { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ===== الخلفيات ===== -->
+<div class="islamic-pattern"></div>
+
+<!-- ===== الحمام ===== -->
+<div class="doves-container">
+    <div class="dove">🕊️</div>
+    <div class="dove">🕊️</div>
+    <div class="dove">🕊️</div>
+    <div class="dove">🕊️</div>
+    <div class="dove">🕊️</div>
+    <div class="dove">🕊️</div>
+    <div class="dove">🕊️</div>
+    <div class="dove">🕊️</div>
+</div>
+
+<div class="container vertical-section">
+
+    <!-- ===== المقدمة ===== -->
+    <div class="fade-in" style="text-align: center; margin: 10px 0 20px; padding: 12px; background: rgba(255,215,0,0.03); border-radius: 40px; border: 1px solid rgba(255,215,0,0.05);">
+        <div style="font-size: 1.1rem; color: #b8c8d8;">
+            <span style="color: #d4af37;">✦</span>
+            تصميم واهداء: 
+            <span style="background: linear-gradient(135deg, #f7e05e, #d4af37); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: 700; font-size: 1.3rem;">محمد سلام أبو ياسين</span>
+            <span style="color: #d4af37;">✦</span>
+        </div>
+    </div>
+
+    <!-- ===== عداد الزوار والمستفيدين ===== -->
+    <div class="stats-section fade-in">
+        <div class="stat-item">
+            <div class="number gold-text" id="visitorCount">0</div>
+            <div class="label silver-text">🕊️ زوار الموقع</div>
+        </div>
+        <div class="stat-item">
+            <div class="number gold-text" id="beneficiaryCount">0</div>
+            <div class="label silver-text">🌹 مستفيدين من الدعاء</div>
+        </div>
+        <div class="stat-item">
+            <div class="number gold-text" id="tasbeehCount">0</div>
+            <div class="label silver-text">📿 تسبيحات</div>
+        </div>
+    </div>
+
+    <!-- ===== أوقات الصلاة ===== -->
+    <div class="prayer-times fade-in">
+        <h3 class="gold-text" style="font-size: 1.8rem; font-family: 'Reem Kufi', 'Amiri', serif;"><i class="fas fa-mosque" style="color:#d4af37;"></i> أوقات الصلاة (القاهرة)</h3>
+        <div class="prayer-grid" id="prayerTimes">
+            <div class="prayer-item">
+                <div class="prayer-name silver-text">الفجر</div>
+                <div class="prayer-time" id="fajr">--:--</div>
+            </div>
+            <div class="prayer-item">
+                <div class="prayer-name silver-text">الظهر</div>
+                <div class="prayer-time" id="dhuhr">--:--</div>
+            </div>
+            <div class="prayer-item">
+                <div class="prayer-name silver-text">العصر</div>
+                <div class="prayer-time" id="asr">--:--</div>
+            </div>
+            <div class="prayer-item">
+                <div class="prayer-name silver-text">المغرب</div>
+                <div class="prayer-time" id="maghrib">--:--</div>
+            </div>
+            <div class="prayer-item">
+                <div class="prayer-name silver-text">العشاء</div>
+                <div class="prayer-time" id="isha">--:--</div>
+            </div>
+        </div>
+        <div class="silver-text" style="font-size: 0.8rem; margin-top: 10px;">🗓️ تحديث تلقائي حسب التاريخ الحالي</div>
+    </div>
+
+    <!-- ===== بطاقة الوالدين ===== -->
+    <div class="memorial-card fade-in">
+        <h1 class="gold-text" style="font-size: 3rem; font-family: 'Reem Kufi', 'Amiri', serif;">❀ صدقة جارية ❀</h1>
+        <div class="silver-text" style="font-size: 1.3rem; margin-bottom: 20px;">لكل من يدخل هذا الموقع</div>
+
+        <div class="parents-container">
+            <div class="parent-card">
+                <div class="title silver-text">🕊️ فقيد الشباب ونسيبى</div>
+                <div class="name gold-text">محمد طلعت أبو الوفا</div>
+                <div class="badge">صدقة جارية</div>
+            </div>
+            <div class="parent-card">
+                <div class="title silver-text">🌹 امى الغالية</div>
+                <div class="name gold-text">نجاح محمد النجار</div>
+                <div class="badge">صدقة جارية</div>
+            </div>
+        </div>
+
+        <div class="photos-section">
+            <div>
+                <div class="photo-frame">
+                    <img src="https://i.ibb.co/xKpkLpCj/IMG-20260629-132948.jpg" alt="والدي" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="no-image" style="display:none; width:100%; height:100%; align-items:center; justify-content:center; flex-direction:column; color:#a0b0c0;">
+                        <span style="font-size:2rem;">🕊</span>
+                        <span>محمد طلعت أبو الوفا</span>
+                    </div>
+                </div>
+                <div class="photo-label gold-text">نسيبى فقيد الشباب</div>
+            </div>
+            <div>
+                <div class="photo-frame">
+                    <img src="https://i.ibb.co/60b67Jhh/IMG.jpg" alt=" امي" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="no-image" style="display:none; width:100%; height:100%; align-items:center; justify-content:center; flex-direction:column; color:#a0b0c0;">
+                        <span style="font-size:2rem;">🌹</span>
+                        <span>نجاح محمد النجار</span>
+                    </div>
+                </div>
+                <div class="photo-label gold-text">والدتي الغالية</div>
+            </div>
+        </div>
+
+        <div class="silver-text" style="font-size: 1.4rem; margin-top: 15px;">
+            اللهم اغفر لهما وارحمهما وعافهما واعف عنهما
+        </div>
+    </div>
+
+    <!-- ===== عداد التسبيح ===== -->
+    <div class="tasbeeh-section fade-in">
+        <h3 class="gold-text" style="font-size: 2rem; font-family: 'Reem Kufi', 'Amiri', serif;"><i class="fas fa-tasbeeh" style="color:#d4af37;"></i> عداد التسبيح</h3>
+        <div class="tasbeeh-counter gold-text" id="counterDisplay">0</div>
+        <div style="display:flex; justify-content:center; gap:20px; flex-wrap:wrap; margin:15px 0;">
+            <button class="btn-tasbeeh" onclick="addTasbeeh()">✦ سبحان الله</button>
+            <button class="btn-tasbeeh" onclick="addTasbeeh(5)" style="border-color:rgba(184,160,112,0.2);">+5</button>
+            <button class="btn-tasbeeh btn-reset" onclick="resetTasbeeh()">⟳ إعادة</button>
+        </div>
+        <div class="silver-text" style="font-size:1rem;">اللهم اجعلها في ميزان حسناتهم</div>
+    </div>
+
+    <!-- ===== مشغل القرآن ===== -->
+    <div class="quran-player fade-in">
+        <h3 class="gold-text" style="font-size: 2rem; font-family: 'Reem Kufi', 'Amiri', serif;"><i class="fas fa-quran" style="color:#d4af37;"></i> تلاوات خاشعة</h3>
+        <audio controls autoplay loop id="quranAudio">
+            <source src="https://h.top4top.io/m_38557m2a70.mp3" type="audio/mpeg">
+            <source src="https://server11.mp3quran.net/basit/001.mp3" type="audio/mpeg">
+            <source src="https://surahquran.com/mp3/Sheikh%20Sayed%20Saeed/036.mp3" type="audio/mpeg">
+            متصفحك لا يدعم تشغيل الصوت.
+        </audio>
+        <div class="reciter-name silver-text" id="reciterName">🎙️ تلاوة خاشعة - سورة يس (القارئ: سيد سعيد)</div>
+        
+        <div class="surah-buttons">
+            <button class="surah-btn active" onclick="playSurah('https://h.top4top.io/m_38557m2a70.mp3', 'سورة يس - سيد سعيد')">
+                <i class="fas fa-play"></i> سورة يس (سيد سعيد)
+            </button>
+            <button class="surah-btn" onclick="playSurah('https://h.top4top.io/m_3855nlt8i0.mp3', 'سورة البقرة - سيد سعيد')">
+                <i class="fas fa-play"></i> سورة البقرة (سيد سعيد)
+            </button>
+            <button class="surah-btn" onclick="playSurah('https://server11.mp3quran.net/basit/001.mp3', 'سورة الفاتحة - عبدالباسط')">
+                <i class="fas fa-play"></i> الفاتحة (عبدالباسط)
+            </button>
+            <button class="surah-btn" onclick="playSurah('https://server11.mp3quran.net/minsh/001.mp3', 'سورة الفاتحة - المنشاوي')">
+                <i class="fas fa-play"></i> الفاتحة (المنشاوي)
+            </button>
+            <button class="surah-btn" onclick="playSurah('https://surahquran.com/mp3/Sheikh%20Sayed%20Saeed/036.mp3', 'سورة يس - نسخة 2')">
+                <i class="fas fa-play"></i> سورة يس (نسخة 2)
+            </button>
+        </div>
+    </div>
+
+    <!-- ===== الأذكار والأدعية ===== -->
+    <div class="athkar-section fade-in">
+        <h2 class="gold-text">🤲 أذكار وأدعية</h2>
+        
+        <!-- أذكار الصباح -->
+        <div class="athkar-category">
+            <h3 class="silver-text">☀️ أذكار الصباح</h3>
+            <div class="athkar-item">
+                <div class="repeat silver-text">📿 تكرر 1</div>
+                <div class="text">أَصْبَحْنَا وَأَصْبَحَ الْمُلْكُ لِلَّهِ وَالْحَمْدُ لِلَّهِ لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ</div>
+                <button class="repeat-btn" onclick="repeatDhikr(this, 1)">🔁 كرر</button>
+            </div>
+            <div class="athkar-item">
+                <div class="repeat silver-text">📿 تكرر 3</div>
+                <div class="text">اللَّهُمَّ بِكَ أَصْبَحْنَا وَبِكَ أَمْسَيْنَا وَبِكَ نَحْيَا وَبِكَ نَمُوتُ وَإِلَيْكَ النُّشُورُ</div>
+                <button class="repeat-btn" onclick="repeatDhikr(this, 3)">🔁 كرر</button>
+            </div>
+            <div class="athkar-item">
+                <div class="repeat silver-text">📿 تكرر 3</div>
+                <div class="text">أَعُوذُ بِاللَّهِ السَّمِيعِ الْعَلِيمِ مِنَ الشَّيْطَانِ الرَّجِيمِ</div>
+                <button class="repeat-btn" onclick="repeatDhikr(this, 3)">🔁 كرر</button>
+            </div>
+            <div class="athkar-item">
+                <div class="repeat silver-text">📿 تكرر 10</div>
+                <div class="text">لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ، لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ</div>
+                <button class="repeat-btn" onclick="repeatDhikr(this, 10)">🔁 كرر</button>
+            </div>
+        </div>
+
+        <!-- أذكار المساء -->
+        <div class="athkar-category">
+            <h3 class="silver-text">🌅 أذكار المساء</h3>
+            <div class="athkar-item">
+                <div class="repeat silver-text">📿 تكرر 1</div>
+                <div class="text">أَمْسَيْنَا وَأَمْسَى الْمُلْكُ لِلَّهِ وَالْحَمْدُ لِلَّهِ لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ</div>
+                <button class="repeat-btn" onclick="repeatDhikr(this, 1)">🔁 كرر</button>
+            </div>
+            <div class="athkar-item">
+                <div class="repeat silver-text">📿 تكرر 3</div>
+                <div class="text">أَعُوذُ بِكَلِمَاتِ اللَّهِ التَّامَّاتِ مِنْ شَرِّ مَا خَلَقَ</div>
+                <button class="repeat-btn" onclick="repeatDhikr(this, 3)">🔁 كرر</button>
+            </div>
+            <div class="athkar-item">
+                <div class="repeat silver-text">📿 تكرر 3</div>
+                <div class="text">اللَّهُمَّ إِنِّي أَسْأَلُكَ الْعَافِيَةَ فِي الدُّنْيَا وَالْآخِرَةِ</div>
+                <button class="repeat-btn" onclick="repeatDhikr(this, 3)">🔁 كرر</button>
+            </div>
+            <div class="athkar-item">
+                <div class="repeat silver-text">📿 تكرر 7</div>
+                <div class="text">رَضِيتُ بِاللَّهِ رَبًّا وَبِالْإِسْلَامِ دِينًا وَبِمُحَمَّدٍ نَبِيًّا</div>
+                <button class="repeat-btn" onclick="repeatDhikr(this, 7)">🔁 كرر</button>
+            </div>
+        </div>
+
+        <!-- أذكار النوم -->
+        <div class="athkar-category">
+            <h3 class="silver-text">🌙 أذكار النوم</h3>
+            <div class="athkar-item">
+                <div class="repeat silver-text">📿 تكرر 1</div>
+                <div class="text">
+                    <span class="bismillah">أَعُوذُ بِاللَّهِ مِنَ الشَّيْطَانِ الرَّجِيمِ</span><br>
+                    (اللَّهُ لَا إِلَهَ إِلَّا هُوَ الْحَيُّ الْقَيُّومُ لَا تَأْخُذُهُ سِنَةً وَلَا نَوْمَ لَهُ مَا فِي السَّمَوَاتِ وَمَا فِي الْأَرْضِ مَن ذَا الَّذِي يَشْفَعُ عِنْدَهُ إِلَّا بِإِذْنِهِ يَعْلَمُ مَا بَيْنَ أَيْدِيهِمْ وَمَا خَلْفَهُمْ وَلَا يُحِيطُونَ بِشَيْءٍ مِّنْ عِلْمِهِ إِلَّا بِمَا شَاءَ وَسِعَ كُرْسِيُّهُ السَّمَوَاتِ وَالْأَرْضَ وَلَا يَئُودُهُ حِفْظُهُمَا وَهُوَ الْعَلِيُّ الْعَظِيمُ)
+                </div>
+                <button class="repeat-btn" onclick="repeatDhikr(this, 1)">🔁 كرر</button>
+            </div>
+            <div class="athkar-item">
+                <div class="repeat silver-text">📿 تكرر 3</div>
+                <div class="text">اللَّهُمَّ بِاسْمِكَ أَمُوتُ وَأَحْيَا</div>
+                <button class="repeat-btn" onclick="repeatDhikr(this, 3)">🔁 كرر</button>
+            </div>
+            <div class="athkar-item">
+                <div class="repeat silver-text">📿 تكرر 3</div>
+                <div class="text">اللَّهُمَّ قِنِي عَذَابَكَ يَوْمَ تَبْعَثُ عِبَادَكَ</div>
+                <button class="repeat-btn" onclick="repeatDhikr(this, 3)">🔁 كرر</button>
+            </div>
+        </div>
+
+        <!-- أدعية للميت -->
+        <div class="athkar-category">
+            <h3 class="silver-text">🤲 أدعية للميت</h3>
+            <div class="athkar-item">
+                <div class="repeat silver-text">📿 الدعاء</div>
+                <div class="text">اللَّهُمَّ اغْفِرْ لَهُ وَارْحَمْهُ، وَعَافِهِ وَاعْفُ عَنْهُ، وَأَكْرِمْ نُزُلَهُ، وَوَسِّعْ مُدْخَلَهُ، وَاغْسِلْهُ بِالْمَاءِ وَالثَّلْجِ وَالْبَرَدِ، وَنَقِّهِ مِنَ الْخَطَايَا كَمَا نَقَّيْتَ الثَّوْبَ الْأَبْيَضَ مِنَ الدَّنَسِ</div>
+            </div>
+            <div class="athkar-item">
+                <div class="repeat silver-text">📿 الدعاء</div>
+                <div class="text">اللَّهُمَّ اجْعَلْهُ فِي عِلِّيِّينَ، وَأَلْحِقْهُ بِالصَّالِحِينَ، وَاغْفِرْ لَنَا وَلَهُ يَا رَبَّ الْعَالَمِينَ</div>
+            </div>
+            <div class="athkar-item">
+                <div class="repeat silver-text">📿 الدعاء</div>
+                <div class="text">اللَّهُمَّ أَنْزِلْهُ مَنْزِلَ الْمُتَّقِينَ، وَاجْعَلْهُ فِي جَنَّاتِ النَّعِيمِ، وَاغْفِرْ لَنَا وَلِجَمِيعِ الْمُسْلِمِينَ</div>
+            </div>
+            <div class="athkar-item">
+                <div class="repeat silver-text">📿 الدعاء</div>
+                <div class="text">اللَّهُمَّ اغْفِرْ لِوَالدَيْنَا وَارْحَمْهُمَا كَمَا رَبَّيَانَا صِغَارًا، وَأَدْخِلْهُمَا الْفِرْدَوْسَ الْأَعْلَى</div>
+            </div>
+            <div class="athkar-item">
+                <div class="repeat silver-text">📿 الدعاء</div>
+                <div class="text">اللَّهُمَّ ثَبِّتْهُمَا بِالْقَوْلِ الثَّابِتِ، وَأَلْهِمْهُمَا حُسْنَ الْجَوَابِ، وَاجْعَلْ قَبْرَهُمَا رَوْضَةً مِنْ رِيَاضِ الْجَنَّةِ</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== المصحف والتفسير ===== -->
+    <div class="mushaf-section fade-in">
+        <h2 class="gold-text">﴿ المصحف الشريف والتفسير الميسر ﴾</h2>
+        
+        <div class="surah-title gold-text">سورة الفاتحة</div>
+        <div class="aya-line">
+            <span class="bismillah">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</span> <span class="aya-number">﴿١﴾</span>
+        </div>
+        <div class="aya-line">
+            الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ <span class="aya-number">﴿٢﴾</span>
+        </div>
+        <div class="aya-line">
+            الرَّحْمَٰنِ الرَّحِيمِ <span class="aya-number">﴿٣﴾</span>
+        </div>
+        <div class="aya-line">
+            مَالِكِ يَوْمِ الدِّينِ <span class="aya-number">﴿٤﴾</span>
+        </div>
+        <div class="aya-line">
+            إِيَّاكَ نَعْبُدُ وَإِيَّاكَ نَسْتَعِينُ <span class="aya-number">﴿٥﴾</span>
+        </div>
+        <div class="aya-line">
+            اهْدِنَا الصِّرَاطَ الْمُسْتَقِيمَ <span class="aya-number">﴿٦﴾</span>
+        </div>
+        <div class="aya-line">
+            صِرَاطَ الَّذِينَ أَنْعَمْتَ عَلَيْهِمْ غَيْرِ الْمَغْضُوبِ عَلَيْهِمْ وَلَا الضَّالِّينَ <span class="aya-number">﴿٧﴾</span>
+        </div>
+
+        <!-- تفسير الفاتحة -->
+        <div class="tafsir-box">
+            <div class="tafsir-title gold-text">📖 تفسير سورة الفاتحة (ميسر)</div>
+            <div class="tafsir-text">
+                <strong>بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</strong>: أبدأ بكل اسم من أسماء الله الحسنى مستعيناً به.<br>
+                <strong>الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ</strong>: الثناء الكامل لله خالق ومربي جميع الخلائق.<br>
+                <strong>الرَّحْمَٰنِ الرَّحِيمِ</strong>: ذو الرحمة الواسعة لجميع الخلق، والمختصة بالمؤمنين.<br>
+                <strong>مَالِكِ يَوْمِ الدِّينِ</strong>: المالك المتصرف في يوم الجزاء والحساب.<br>
+                <strong>إِيَّاكَ نَعْبُدُ وَإِيَّاكَ نَسْتَعِينُ</strong>: نخصك وحدك بالعبادة والاستعانة.<br>
+                <strong>اهْدِنَا الصِّرَاطَ الْمُسْتَقِيمَ</strong>: دلنا وأرشدنا إلى الطريق الواضح الموصل إلى الجنة.<br>
+                <strong>صِرَاطَ الَّذِينَ أَنْعَمْتَ عَلَيْهِمْ</strong>: طريق النبيين والصديقين والشهداء والصالحين.<br>
+                <strong>غَيْرِ الْمَغْضُوبِ عَلَيْهِمْ وَلَا الضَّالِّينَ</strong>: ليس طريق اليهود والنصارى ومن على شاكلتهم.
+            </div>
+        </div>
+
+        <div style="height:30px;"></div>
+
+        <div class="surah-title gold-text" style="font-size:1.4rem;">آية الكرسي</div>
+        <div class="aya-line" style="font-size:1.3rem; line-height:2.2;">
+            اللَّهُ لَا إِلَهَ إِلَّا هُوَ الْحَيُّ الْقَيُّومُ <span class="aya-number">﴿٢٥٥﴾</span><br>
+            لَا تَأْخُذُهُ سِنَةٌ وَلَا نَوْمٌ <span class="aya-number">﴿٢٥٥﴾</span><br>
+            لَهُ مَا فِي السَّمَاوَاتِ وَمَا فِي الْأَرْضِ <span class="aya-number">﴿٢٥٥﴾</span><br>
+            مَنْ ذَا الَّذِي يَشْفَعُ عِنْدَهُ إِلَّا بِإِذْنِهِ <span class="aya-number">﴿٢٥٥﴾</span><br>
+            يَعْلَمُ مَا بَيْنَ أَيْدِيهِمْ وَمَا خَلْفَهُمْ <span class="aya-number">﴿٢٥٥﴾</span><br>
+            وَلَا يُحِيطُونَ بِشَيْءٍ مِنْ عِلْمِهِ إِلَّا بِمَا شَاءَ <span class="aya-number">﴿٢٥٥﴾</span><br>
+            وَسِعَ كُرْسِيُّهُ السَّمَاوَاتِ وَالْأَرْضَ <span class="aya-number">﴿٢٥٥﴾</span><br>
+            وَلَا يَئُودُهُ حِفْظُهُمَا وَهُوَ الْعَلِيُّ الْعَظِيمُ <span class="aya-number">﴿٢٥٥﴾</span>
+        </div>
+
+        <!-- تفسير آية الكرسي -->
+        <div class="tafsir-box">
+            <div class="tafsir-title gold-text">📖 تفسير آية الكرسي (ميسر)</div>
+            <div class="tafsir-text">
+                <strong>اللَّهُ لَا إِلَهَ إِلَّا هُوَ</strong>: الله هو المعبود بحق، لا معبود سواه.<br>
+                <strong>الْحَيُّ الْقَيُّومُ</strong>: الحي الذي لا يموت، القائم على كل شيء.<br>
+                <strong>لَا تَأْخُذُهُ سِنَةٌ وَلَا نَوْمٌ</strong>: لا يعتريه نعاس ولا نوم.<br>
+                <strong>لَهُ مَا فِي السَّمَاوَاتِ وَمَا فِي الْأَرْضِ</strong>: كل ما في الكون ملك له.<br>
+                <strong>مَنْ ذَا الَّذِي يَشْفَعُ عِنْدَهُ إِلَّا بِإِذْنِهِ</strong>: لا يشفع أحد عنده إلا بإذنه.<br>
+                <strong>يَعْلَمُ مَا بَيْنَ أَيْدِيهِمْ وَمَا خَلْفَهُمْ</strong>: يعلم ما مضى وما سيأتي.<br>
+                <strong>وَلَا يُحِيطُونَ بِشَيْءٍ مِنْ عِلْمِهِ إِلَّا بِمَا شَاءَ</strong>: لا يعلم الخلق من علمه إلا ما أعلمهم.<br>
+                <strong>وَسِعَ كُرْسِيُّهُ السَّمَاوَاتِ وَالْأَرْضَ</strong>: كرسيه (علمه أو سلطانه) واسع للسموات والأرض.<br>
+                <strong>وَلَا يَئُودُهُ حِفْظُهُمَا وَهُوَ الْعَلِيُّ الْعَظِيمُ</strong>: لا يثقله حفظهما، وهو العلي العظيم.
+            </div>
+        </div>
+
+        <div style="height:30px;"></div>
+
+        <div class="surah-title gold-text" style="font-size:1.4rem;">سورة الإخلاص</div>
+        <div class="aya-line">
+            <span class="bismillah">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</span> <span class="aya-number">﴿١﴾</span>
+        </div>
+        <div class="aya-line">
+            قُلْ هُوَ اللَّهُ أَحَدٌ <span class="aya-number">﴿١﴾</span>
+        </div>
+        <div class="aya-line">
+            اللَّهُ الصَّمَدُ <span class="aya-number">﴿٢﴾</span>
+        </div>
+        <div class="aya-line">
+            لَمْ يَلِدْ وَلَمْ يُولَدْ <span class="aya-number">﴿٣﴾</span>
+        </div>
+        <div class="aya-line">
+            وَلَمْ يَكُنْ لَهُ كُفُوًا أَحَدٌ <span class="aya-number">﴿٤﴾</span>
+        </div>
+    </div>
+
+    <!-- ===== زر المشاركة ===== -->
+    <div class="share-section fade-in">
+        <button class="share-btn" onclick="shareSite('whatsapp')">
+            <i class="fab fa-whatsapp" style="color:#25D366;"></i> واتساب
+        </button>
+        <button class="share-btn" onclick="shareSite('facebook')">
+            <i class="fab fa-facebook" style="color:#1877F2;"></i> فيسبوك
+        </button>
+        <button class="share-btn" onclick="shareSite('twitter')">
+            <i class="fab fa-twitter" style="color:#1DA1F2;"></i> تويتر
+        </button>
+        <button class="share-btn" onclick="shareSite('copy')">
+            <i class="fas fa-link" style="color:#d4af37;"></i> نسخ الرابط
+        </button>
+    </div>
+
+    <!-- ===== دعاء ختامي ===== -->
+    <div class="final-dua fade-in">
+        <strong>اللهم اجعل هذا العمل خالصاً لوجهك الكريم</strong><br>
+        واجعله صدقة جارية لـ <strong>فقيد الشباب محمد طلعت أبو الوفا</strong> و <strong>نجاح محمد النجار</strong><br>
+        من تصميم واهداء <strong>محمد سلام أبو ياسين</strong><br>
+        ولجميع موتى المسلمين والمسلمات<br>
+        <span class="ameen gold-text">آمين يا رب العالمين</span>
+    </div>
+
+    <!-- ===== التذييل ===== -->
+    <div class="footer fade-in">
+        <div class="designer">
+            <span style="color: #d4af37;">✦</span>
+            تصميم واهداء: 
+            <span class="name">محمد سلام أبو ياسين</span>
+            <span style="color: #d4af37;">✦</span>
+        </div>
+        <div class="silver-text" style="margin-top:8px; font-size:0.9rem;">
+            ❀ صدقة جارية عن والدتيّ ❀
+        </div>
+        <div class="silver-text" style="margin-top:5px; font-size:0.7rem; color:#5a6a7a;">
+            تم التحديث: ٢٢ يوليو ٢٠٢٦
+        </div>
+    </div>
+
+</div>
+
+<script>
+    // ===== عداد التسبيح =====
+    let counter = 0;
+    const counterDisplay = document.getElementById('counterDisplay');
+
+    function addTasbeeh(amount = 1) {
+        counter += amount;
+        counterDisplay.textContent = counter;
+        document.getElementById('tasbeehCount').textContent = counter;
+        counterDisplay.style.transform = 'scale(1.2)';
+        counterDisplay.style.textShadow = '0 0 80px rgba(255,215,0,0.4)';
+        setTimeout(() => {
+            counterDisplay.style.transform = 'scale(1)';
+            counterDisplay.style.textShadow = '0 0 50px rgba(255,215,0,0.2)';
+        }, 200);
+        // تحديث عدد التسبيحات في العداد العلوي
+        document.getElementById('tasbeehCount').textContent = counter;
+    }
+
+    function resetTasbeeh() {
+        counter = 0;
+        counterDisplay.textContent = counter;
+        document.getElementById('tasbeehCount').textContent = counter;
+        counterDisplay.style.transform = 'scale(0.8)';
+        setTimeout(() => counterDisplay.style.transform = 'scale(1)', 200);
+    }
+
+    // ===== مشغل القرآن =====
+    const audio = document.getElementById('quranAudio');
+    const reciterName = document.getElementById('reciterName');
+
+    function playSurah(url, name) {
+        audio.src = url;
+        audio.load();
+        audio.play().catch(e => console.log('التشغيل مقيد'));
+        reciterName.textContent = '🎙️ تلاوة خاشعة - ' + name;
+        
+        document.querySelectorAll('.surah-btn').forEach(btn => btn.classList.remove('active'));
+        document.querySelectorAll('.surah-btn').forEach(btn => {
+            if (btn.textContent.includes(name.split(' - ')[0]) || name.includes(btn.textContent.split('(')[0])) {
+                btn.classList.add('active');
+            }
+        });
+    }
+
+    // تشغيل سورة يس تلقائياً
+    document.addEventListener('DOMContentLoaded', function() {
+        audio.src = 'https://h.top4top.io/m_38557m2a70.mp3';
+        audio.load();
+        audio.play().catch(e => console.log('التشغيل التلقائي مقيد'));
+        reciterName.textContent = '🎙️ تلاوة خاشعة - سورة يس (القارئ: سيد سعيد)';
+        
+        document.querySelectorAll('.surah-btn').forEach(btn => {
+            if (btn.textContent.includes('سورة يس') && btn.textContent.includes('سيد سعيد')) {
+                btn.classList.add('active');
+            }
+        });
+    });
+
+    // ===== عداد الزوار (تخزين محلي) =====
+    function updateVisitors() {
+        let visitors = localStorage.getItem('siteVisitors') || 0;
+        visitors = parseInt(visitors) + 1;
+        localStorage.setItem('siteVisitors', visitors);
+        document.getElementById('visitorCount').textContent = visitors;
+        
+        // عدد المستفيدين (نصف الزوار تقريباً)
+        let beneficiaries = Math.floor(visitors * 0.7);
+        document.getElementById('beneficiaryCount').textContent = beneficiaries;
+    }
+    updateVisitors();
+
+    // ===== أوقات الصلاة (محاكاة) =====
+    function updatePrayerTimes() {
+        const now = new Date();
+        const hours = now.getHours();
+        const minutes = now.getMinutes();
+        
+        // أوقات تقريبية للقاهرة (يمكن تعديلها حسب الحاجة)
+        const times = {
+            fajr: { h: 4, m: 30 },
+            dhuhr: { h: 12, m: 0 },
+            asr: { h: 15, m: 30 },
+            maghrib: { h: 18, m: 45 },
+            isha: { h: 20, m: 15 }
+        };
+        
+        document.getElementById('fajr').textContent = formatTime(times.fajr.h, times.fajr.m);
+        document.getElementById('dhuhr').textContent = formatTime(times.dhuhr.h, times.dhuhr.m);
+        document.getElementById('asr').textContent = formatTime(times.asr.h, times.asr.m);
+        document.getElementById('maghrib').textContent = formatTime(times.maghrib.h, times.maghrib.m);
+        document.getElementById('isha').textContent = formatTime(times.isha.h, times.isha.m);
+    }
+    
+    function formatTime(h, m) {
+        return String(h).padStart(2, '0') + ':' + String(m).padStart(2, '0');
+    }
+    updatePrayerTimes();
+
+    // ===== تكرار الأذكار =====
+    function repeatDhikr(button, count) {
+        let remaining = count;
+        const parent = button.parentElement;
+        const textDiv = parent.querySelector('.text');
+        const originalText = textDiv.innerHTML;
+        
+        button.textContent = `⏳ ${remaining}`;
+        button.disabled = true;
+        
+        const interval = setInterval(() => {
+            remaining--;
+            if (remaining > 0) {
+                button.textContent = `⏳ ${remaining}`;
+                // وميض بسيط
+                textDiv.style.color = '#ffd700';
+                setTimeout(() => textDiv.style.color = '', 200);
+            } else {
+                clearInterval(interval);
+                button.textContent = '✅ تم';
+                button.style.background = 'rgba(0,200,0,0.1)';
+                button.style.borderColor = '#00aa00';
+                textDiv.style.color = '#ffd700';
+                setTimeout(() => {
+                    button.textContent = '🔁 كرر';
+                    button.disabled = false;
+                    button.style.background = '';
+                    button.style.borderColor = '';
+                    textDiv.style.color = '';
+                }, 1500);
+            }
+        }, 500);
+    }
+
+    // ===== مشاركة الموقع =====
+    function shareSite(platform) {
+        const url = window.location.href;
+        const text = '🌹 صدقة جارية لفقيد الشباب محمد طلعت أبو الوفا ووالدتي نجاح محمد النجار - ادعوا لهم بالرحمة والمغفرة 🤲';
+        
+        switch(platform) {
+            case 'whatsapp':
+                window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(text + '\n' + url)}`, '_blank');
+                break;
+            case 'facebook':
+                window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}&quote=${encodeURIComponent(text)}`, '_blank');
+                break;
+            case 'twitter':
+                window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`, '_blank');
+                break;
+            case 'copy':
+                navigator.clipboard.writeText(url).then(() => {
+                    alert('✅ تم نسخ الرابط! شاركه مع الآخرين ليستفيدوا ويدعوا لوالديك.');
+                }).catch(() => {
+                    alert('📋 الرابط: ' + url);
+                });
+                break;
+        }
+    }
+
+    // ===== تأثير التمرير (fade-in) =====
+    document.addEventListener('DOMContentLoaded', function() {
+        const fadeElements = document.querySelectorAll('.fade-in');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        fadeElements.forEach(el => observer.observe(el));
+    });
+</script>
+
+</body>
+</html>
